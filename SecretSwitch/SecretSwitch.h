@@ -1,5 +1,5 @@
 //
-//  SerectSwitch.h
+//  SecretSwitch.h
 //  SecretSwitch
 //
 //  Created by croath on 1/22/14.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SerectSwitch : NSObject
+@interface SecretSwitch : NSObject
 
 + (void)protectSecret;
 
