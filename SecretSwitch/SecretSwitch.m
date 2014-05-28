@@ -13,6 +13,8 @@
 
 static UIImageView *imageView;
 
+#define PI 3.1415
+
 + (void)protectSecret
 {
   if (imageView == nil) {
@@ -109,8 +111,32 @@ static UIImageView *imageView;
   CGContextRelease(ctx);
   free(buffer1.data);
   
-  [imageView setAlpha:1.f];
+  CGRect fullScreenRect = [UIScreen mainScreen].bounds;
+  /// Calculate bounds based on orientation.
+  UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+  //implicitly in Portrait orientation.
+  if (orientation == UIInterfaceOrientationLandscapeRight || orientation == UIInterfaceOrientationLandscapeLeft) {
+      CGRect temp = CGRectZero;
+      temp.size.width = fullScreenRect.size.height;
+      temp.size.height = fullScreenRect.size.width;
+      fullScreenRect = temp;
+  }
+
   [imageView setImage:image];
+  imageView.transform = CGAffineTransformIdentity;
+  imageView.frame = fullScreenRect;
+  
+  if (orientation == UIInterfaceOrientationLandscapeRight) {
+      imageView.transform = CGAffineTransformConcat(imageView.transform, CGAffineTransformMakeRotation(PI / 2));
+      imageView.transform = CGAffineTransformConcat(imageView.transform, CGAffineTransformMakeTranslation(-128, 128));
+  } else if (orientation == UIInterfaceOrientationLandscapeLeft) {
+      imageView.transform = CGAffineTransformConcat(imageView.transform, CGAffineTransformMakeRotation(-PI / 2));
+      imageView.transform = CGAffineTransformConcat(imageView.transform, CGAffineTransformMakeTranslation(-128, 128));
+  } else if (orientation == UIInterfaceOrientationPortraitUpsideDown) {
+      imageView.transform = CGAffineTransformConcat(imageView.transform, CGAffineTransformMakeRotation(PI));
+  }
+  
+  [imageView setAlpha:1.f];
   [window addSubview:imageView];
 }
 
