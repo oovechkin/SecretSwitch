@@ -9,9 +9,20 @@
 #import "SecretSwitch.h"
 #import <Accelerate/Accelerate.h>
 
+@interface SecretSwitch ()
+
++ (void)applicationWillResignActive;
++ (void)applicationDidBecomeActive;
+
+@end
+
 @implementation SecretSwitch
 
 static UIImageView *imageView;
+static CGFloat blurFactor = 5;
+static NSInteger resolutionFactor = 4;
+
+#define PI 3.1415
 
 + (void)protectSecret
 {
@@ -37,12 +48,12 @@ static UIImageView *imageView;
   UIWindow *window = [[UIApplication sharedApplication] keyWindow];
   UIView *view = [window.subviews lastObject];
   
-  UIGraphicsBeginImageContextWithOptions(CGSizeMake(view.bounds.size.width/4, view.bounds.size.height/4), NO, 0);
+  UIGraphicsBeginImageContextWithOptions(CGSizeMake(view.bounds.size.width/resolutionFactor, view.bounds.size.height/resolutionFactor), NO, 0);
   
   [view drawViewHierarchyInRect:CGRectMake(view.bounds.origin.x,
                                            view.bounds.origin.y,
-                                           view.bounds.size.width/4,
-                                           view.bounds.size.height/4)
+                                           view.bounds.size.width/resolutionFactor,
+                                           view.bounds.size.height/resolutionFactor)
              afterScreenUpdates:NO];
   
   UIImage *copied = UIGraphicsGetImageFromCurrentImageContext();
@@ -50,7 +61,7 @@ static UIImageView *imageView;
   
   
   //boxsize must be an odd integer
-  uint32_t boxSize = (uint32_t)(5.0f * copied.scale);
+  uint32_t boxSize = (uint32_t)(blurFactor * copied.scale);
   if (boxSize % 2 == 0)
     boxSize ++;
   
@@ -109,8 +120,32 @@ static UIImageView *imageView;
   CGContextRelease(ctx);
   free(buffer1.data);
   
-  [imageView setAlpha:1.f];
+  CGRect fullScreenRect = [UIScreen mainScreen].bounds;
+  /// Calculate bounds based on orientation.
+  UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+  //implicitly in Portrait orientation.
+  if (orientation == UIInterfaceOrientationLandscapeRight || orientation == UIInterfaceOrientationLandscapeLeft) {
+      CGRect temp = CGRectZero;
+      temp.size.width = fullScreenRect.size.height;
+      temp.size.height = fullScreenRect.size.width;
+      fullScreenRect = temp;
+  }
+
   [imageView setImage:image];
+  imageView.transform = CGAffineTransformIdentity;
+  imageView.frame = fullScreenRect;
+  
+  if (orientation == UIInterfaceOrientationLandscapeRight) {
+      imageView.transform = CGAffineTransformConcat(imageView.transform, CGAffineTransformMakeRotation(PI / 2));
+      imageView.transform = CGAffineTransformConcat(imageView.transform, CGAffineTransformMakeTranslation(-128, 128));
+  } else if (orientation == UIInterfaceOrientationLandscapeLeft) {
+      imageView.transform = CGAffineTransformConcat(imageView.transform, CGAffineTransformMakeRotation(-PI / 2));
+      imageView.transform = CGAffineTransformConcat(imageView.transform, CGAffineTransformMakeTranslation(-128, 128));
+  } else if (orientation == UIInterfaceOrientationPortraitUpsideDown) {
+      imageView.transform = CGAffineTransformConcat(imageView.transform, CGAffineTransformMakeRotation(PI));
+  }
+  
+  [imageView setAlpha:1.f];
   [window addSubview:imageView];
 }
 
@@ -125,4 +160,17 @@ static UIImageView *imageView;
                      }
                    }];
 }
+
+#pragma mark - Properties
+
++ (void)setBlurFactor:(CGFloat)factor {
+  factor = MIN(100, MAX(1, factor));
+  blurFactor = factor;
+}
+
++ (void)setResolutionFactor:(NSInteger)factor {
+  factor = MIN(8, MAX(1, factor));
+  resolutionFactor = factor;
+}
+
 @end
