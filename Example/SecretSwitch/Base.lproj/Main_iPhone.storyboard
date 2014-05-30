@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,20 +16,114 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tIJ-xg-OyW">
-                                <rect key="frame" x="36" y="209" width="242" height="157"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SecretSwitch example App" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="260" translatesAutoresizingMaskIntoConstraints="NO" id="Xce-AW-SWF">
+                                <rect key="frame" x="30" y="30" width="260" height="81"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <state key="normal" title="Button">
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="34"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="240" translatesAutoresizingMaskIntoConstraints="NO" id="AhL-k9-Fk3">
+                                <rect key="frame" x="40" y="129" width="240" height="110"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="110" id="ZDj-rN-byi"/>
+                                </constraints>
+                                <string key="text">Press the Home button twice to entering multitasking. You will see that this app gets masked by a blurred screenshot of the current contents.</string>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xbe-qw-hMk">
+                                <rect key="frame" x="82" y="496" width="156" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="wAh-h4-G80"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Present popup">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="SJI-Us-tL3" kind="modal" id="taT-io-sBc"/>
+                                </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.89147555440000004" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="AhL-k9-Fk3" firstAttribute="top" secondItem="Xce-AW-SWF" secondAttribute="bottom" constant="18" id="6EU-Dr-1hJ"/>
+                            <constraint firstAttribute="centerX" secondItem="Xce-AW-SWF" secondAttribute="centerX" id="BJW-2s-3GD"/>
+                            <constraint firstItem="AhL-k9-Fk3" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="40" id="C9r-8w-Xg7"/>
+                            <constraint firstAttribute="trailing" secondItem="Xce-AW-SWF" secondAttribute="trailing" constant="30" id="KiF-XM-ZEy"/>
+                            <constraint firstItem="Qtp-ee-z93" firstAttribute="top" secondItem="Xbe-qw-hMk" secondAttribute="bottom" constant="40" id="QOi-GG-Ep7"/>
+                            <constraint firstAttribute="centerX" secondItem="Xbe-qw-hMk" secondAttribute="centerX" id="irL-6y-MdH"/>
+                            <constraint firstItem="Xce-AW-SWF" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="30" id="qIc-ea-jCh"/>
+                            <constraint firstItem="Xce-AW-SWF" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="30" id="u7b-a5-pbp"/>
+                            <constraint firstAttribute="trailing" secondItem="AhL-k9-Fk3" secondAttribute="trailing" constant="40" id="w49-tJ-hUK"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="197" y="224"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="IiN-un-5Mb">
+            <objects>
+                <navigationController definesPresentationContext="YES" modalPresentationStyle="formSheet" id="SJI-Us-tL3" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="q06-FN-TKE">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="ezj-YU-uNP">
+                        <rect key="frame" x="0.0" y="576" width="540" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="FP9-kd-8GG" kind="relationship" relationship="rootViewController" id="v82-Sd-exN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PfY-NB-gYY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="634" y="-220"/>
+        </scene>
+        <!--Modal View Controller - Modal example-->
+        <scene sceneID="vxi-bc-ytu">
+            <objects>
+                <viewController id="FP9-kd-8GG" customClass="ModalViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Eqd-iw-O7i"/>
+                        <viewControllerLayoutGuide type="bottom" id="LJ5-GD-F9Z"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oSe-UP-2RZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notice that Modal View Controllers are handled correctly as well." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="238" translatesAutoresizingMaskIntoConstraints="NO" id="wAb-3v-o8y">
+                                <rect key="frame" x="41" y="108" width="238" height="85"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="24"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.99177416060000001" blue="0.79916361339999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="wAb-3v-o8y" secondAttribute="centerX" id="2NJ-AS-i15"/>
+                            <constraint firstItem="wAb-3v-o8y" firstAttribute="top" secondItem="Eqd-iw-O7i" secondAttribute="bottom" constant="44" id="DPh-Pu-o9w"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Modal example" id="bde-c1-GDr">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="mzH-IH-b0Q">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="FP9-kd-8GG" id="PRm-8x-GGP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ynd-rE-ZOc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="640" y="554"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
