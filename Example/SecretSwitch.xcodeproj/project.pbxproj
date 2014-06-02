@@ -23,6 +23,7 @@
 		27A0EE491889A49800F0BFF7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27A0EE471889A49800F0BFF7 /* InfoPlist.strings */; };
 		27A0EE4B1889A49800F0BFF7 /* SecretSwitchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A0EE4A1889A49800F0BFF7 /* SecretSwitchTests.m */; };
 		A08DE8C61907C1CB007D7E3F /* SecretSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = A08DE8C51907C1CB007D7E3F /* SecretSwitch.m */; };
+		E838D8AD1938871800C15023 /* ModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E838D8AC1938871800C15023 /* ModalViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		27A0EE4A1889A49800F0BFF7 /* SecretSwitchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecretSwitchTests.m; sourceTree = "<group>"; };
 		A08DE8C41907C1CB007D7E3F /* SecretSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecretSwitch.h; sourceTree = "<group>"; };
 		A08DE8C51907C1CB007D7E3F /* SecretSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecretSwitch.m; sourceTree = "<group>"; };
+		E838D8AB1938871800C15023 /* ModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalViewController.h; sourceTree = "<group>"; };
+		E838D8AC1938871800C15023 /* ModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +127,8 @@
 				27A0EE311889A49800F0BFF7 /* Main_iPad.storyboard */,
 				27A0EE341889A49800F0BFF7 /* ViewController.h */,
 				27A0EE351889A49800F0BFF7 /* ViewController.m */,
+				E838D8AB1938871800C15023 /* ModalViewController.h */,
+				E838D8AC1938871800C15023 /* ModalViewController.m */,
 				27A0EE371889A49800F0BFF7 /* Images.xcassets */,
 				27A0EE231889A49800F0BFF7 /* Supporting Files */,
 			);
@@ -269,6 +274,7 @@
 			files = (
 				27A0EE361889A49800F0BFF7 /* ViewController.m in Sources */,
 				A08DE8C61907C1CB007D7E3F /* SecretSwitch.m in Sources */,
+				E838D8AD1938871800C15023 /* ModalViewController.m in Sources */,
 				27A0EE2D1889A49800F0BFF7 /* AppDelegate.m in Sources */,
 				27A0EE291889A49800F0BFF7 /* main.m in Sources */,
 			);
